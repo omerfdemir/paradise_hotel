@@ -1,0 +1,777 @@
+(dp1
+S'output'
+p2
+S"<class 'sqlite3.OperationalError'> no such column: room_specs"
+p3
+sS'layer'
+p4
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\controllers/default.py'
+p5
+sS'code'
+p6
+S'# -*- coding: utf-8 -*-\n# this file is released under public domain and you can use without limitations\n\n# -------------------------------------------------------------------------\n# This is a sample controller\n# - index is the default action of any application\n# - user is required for authentication and authorization\n# - download is for downloading files uploaded in the db (does streaming)\n# -------------------------------------------------------------------------\nimport random\ndef capitalize(title):\n   words = title.split()\n   words = [word.capitalize() for word in words]\n   return " ".join(words)\n\n\ndef about_us():\n    return dict(page_title="About Us")\ndef login():\n    return dict(page_title="Login Screen")\n\nall_rooms = {\n            1:{ "name":"Classic Suite",\n                        "room_type":"1+1",\n                        "person":"2",\n                        "price":"150$ per Night",\n                        "specs":\'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV\'\n                        },\n            2:{ "name":"Superior Suite",\n                        "room_type":"1+1",\n                        "person":"3",\n                        "price":"200$ per Night",\n                        "specs":\'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV\'\n                        },\n            3:{ "name":"Deluxe Suite",\n                        "room_type":"1+1",\n                        "person":"4",\n                        "price":"250$ per Night",\n                        "specs":\'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV\'\n                        },\n            4:{ "name":"Junior Family Suite",\n                        "room_type":"2+1",\n                        "person":"6",\n                        "price":"300$ per Night",\n                        "specs":\'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi \'\n                        },\n            5:{ "name":"Family Suite",\n                        "room_type":"2+1 Dublex",\n                        "person":"6",\n                        "price":"400$ per Night",\n                        "specs":\'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi\'\n                        },\n            6:{ "name":"Deluxe Family Suite",\n                        "room_type":"2+1 Dublex",\n                        "person":"8",\n                        "price":"500$ per Night",\n                        "specs":\'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi\'\n                        },\n\n}\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login\n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    http://..../[app]/default/user/bulk_register\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users\n    """\n    return dict(form=auth())\ndef room():\n        print request.args\n        room_id = int(request.args[0])\n        room_data = all_rooms[room_id]\n        room_price = room_data["price"]\n        price_rooms = []\n        db_connection = db( (db.room_specs) & (db.room_specs.Room_id == room_id)).select(\'Username\',\'Comments\')\n\n        for rid, room in all_rooms.items():\n            if room["price"] == room_price and rid != room_id:\n                room["room_id"] = rid\n                price_rooms.append(room)\n        form = FORM(\'Comment\',INPUT(_name=\'comment\'),\n                    \'Score\',INPUT(_name=\'score\',requires=IS_IN_SET({1,2,3,4,5,6,7,8,9,10})),\n                    INPUT(_type=\'submit\',_value=\'Submit\'))\n        if form.process().accepted:\n            db.room_specs.insert(Room_id =room_id ,\n                                Comments=form.vars.comment,\n                                Score=form.vars.score,\n                                User_id=session.user.id,\n                                Username=session.user.Username)\n            return redirect(request.env.http_referer)\n\n        return dict(page_title="Rooms Specs",data=room_data, price_rooms=price_rooms,form=form,comments=db_connection)\n\n\ndef rooms():\n    return dict(page_title="Rooms",rooms_data=all_rooms.items())\n\n\n\n\n\ndef index():\n    """\n    example action using the internationalization operator T and flash\n    rendered by views/default/index.html or views/generic.html\n\n    if you need a simple wiki simply replace the two lines below with:\n    return auth.wiki()\n    """\n    return dict(page_title="Home Page")\n\n\n\n@cache.action()\ndef download():\n    """\n    allows downloading of uploaded files\n    http://..../[app]/default/download/[filename]\n    """\n    return response.download(request, db)\n\n\ndef call():\n    """\n    exposes services. for example:\n    http://..../[app]/default/call/jsonrpc\n    decorate with @services.jsonrpc the functions to expose\n    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv\n    """\n    return service()\n\nresponse._vars=response._caller(room)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'sqlite3'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of OperationalError object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of OperationalError object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of OperationalError object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of OperationalError object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'__init__'
+p26
+S"<method-wrapper '__init__' of OperationalError object>"
+p27
+sS'__setattr__'
+p28
+S"<method-wrapper '__setattr__' of OperationalError object>"
+p29
+sS'__reduce_ex__'
+p30
+S'<built-in method __reduce_ex__ of OperationalError object>'
+p31
+sS'__new__'
+p32
+S'<built-in method __new__ of type object>'
+p33
+sS'__format__'
+p34
+S'<built-in method __format__ of OperationalError object>'
+p35
+sS'__class__'
+p36
+S"<class 'sqlite3.OperationalError'>"
+p37
+sS'__doc__'
+p38
+S'None'
+p39
+sS'__getitem__'
+p40
+S"<method-wrapper '__getitem__' of OperationalError object>"
+p41
+sS'__setstate__'
+p42
+S'<built-in method __setstate__ of OperationalError object>'
+p43
+sS'__getattribute__'
+p44
+S"<method-wrapper '__getattribute__' of OperationalError object>"
+p45
+sS'args'
+p46
+S"('no such column: room_specs',)"
+p47
+sS'__subclasshook__'
+p48
+S'<built-in method __subclasshook__ of type object>'
+p49
+sS'__unicode__'
+p50
+S'<built-in method __unicode__ of OperationalError object>'
+p51
+sS'__delattr__'
+p52
+S"<method-wrapper '__delattr__' of OperationalError object>"
+p53
+sS'__repr__'
+p54
+S"<method-wrapper '__repr__' of OperationalError object>"
+p55
+sS'__hash__'
+p56
+S"<method-wrapper '__hash__' of OperationalError object>"
+p57
+ssS'evalue'
+p58
+S'no such column: room_specs'
+p59
+sS'request'
+p60
+cgluon.html
+XML_unpickle
+p61
+(S's\xfek\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>paradise_hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>3</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">gsScrollPos</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-cf99ead7-861e-4623-8b75-d58fccc8efad<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_paradise_hotel</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-8d5a3fd5-2747-47c7-a1b9-a462dec62366<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_web13</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-76f180d9-dc55-4a1b-a30d-41646299d7bd<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-cef9dcd3-acb1-4d86-9bd4-23ca0e075a7c<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>tr-TR,tr;q=0.8,en-US;q=0.6,en;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>gsScrollPos=; session_id_web13=127.0.0.1-76f180d9-dc55-4a1b-a30d-41646299d7bd; session_id_welcome=127.0.0.1-cef9dcd3-acb1-4d86-9bd4-23ca0e075a7c; session_id_paradise_hotel=127.0.0.1-8d5a3fd5-2747-47c7-a1b9-a462dec62366; session_id_admin=127.0.0.1-cf99ead7-861e-4623-8b75-d58fccc8efad</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_DNT</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/paradise_hotel/default/room/3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>62631</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>OMERF-PC</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\welcome\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\paradise_hotel\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\week12\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\admin\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\web13\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x2d92cd8: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;OMERF-PC&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>tr-TR,tr;q=0.8,en-US;q=0.6,en;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>gsScrollPos=; session_id_web13=127.0.0.1-76f180d9-dc55-4a1b-a30d-41646299d7bd; session_id_welcome=127.0.0.1-cef9dcd3-acb1-4d86-9bd4-23ca0e075a7c; session_id_paradise_hotel=127.0.0.1-8d5a3fd5-2747-47c7-a1b9-a462dec62366; session_id_admin=127.0.0.1-cf99ead7-861e-4623-8b75-d58fccc8efad</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_dnt</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>169.254.217.175</div></td></tr><tr><td><div>fe80::587f:ee15:38b8:54c2%15</div></td></tr><tr><td><div>fe80::2182:71e8:e91c:decf%17</div></td></tr><tr><td><div>192.168.1.101</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.200.1</div></td></tr><tr><td><div>192.168.204.2</div></td></tr><tr><td><div>fe80::8026:209c:c3bd:c7c7%14</div></td></tr><tr><td><div>169.254.177.77</div></td></tr><tr><td><div>fe80::5511:d8ff:d5f:b14d%7</div></td></tr><tr><td><div>fe80::71fc:18ad:f78a:d9af%16</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>OMERF-PC</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/paradise_hotel/default/room/3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>62631</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/paradise_hotel/default/room/3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>OMERF-PC</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x0218D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x02D0F298&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x08E6A970&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x0218D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x02D0F298&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x08E6A970&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>room</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\welcome\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\paradise_hotel\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\week12\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\admin\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\web13\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x2d92cd8: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;OMERF-PC&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>169.254.217.175</div></td></tr><tr><td><div>fe80::587f:ee15:38b8:54c2%15</div></td></tr><tr><td><div>fe80::2182:71e8:e91c:decf%17</div></td></tr><tr><td><div>192.168.1.101</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.200.1</div></td></tr><tr><td><div>192.168.204.2</div></td></tr><tr><td><div>fe80::8026:209c:c3bd:c7c7%14</div></td></tr><tr><td><div>169.254.177.77</div></td></tr><tr><td><div>fe80::5511:d8ff:d5f:b14d%7</div></td></tr><tr><td><div>fe80::71fc:18ad:f78a:d9af%16</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>OMERF-PC</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 12, 30, 2, 32, 3, 566000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div>3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/paradise_hotel/default/room/3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 12, 29, 23, 32, 3, 566000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x07F5D630&gt;</div></td></tr></table></div>'
+tRp62
+sS'frames'
+p63
+(lp64
+(dp65
+S'file'
+p66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\restricted.py'
+p67
+sS'dump'
+p68
+(dp69
+S'environment'
+p70
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, ...}"
+p71
+sS'ccode'
+p72
+S'<code object <module> at 08ACABF0, file "C:\\User...\\paradise_hotel\\controllers/default.py", line 10>'
+p73
+ssS'lnum'
+p74
+I227
+sS'lines'
+p75
+(dp76
+I224
+S'            ccode = code'
+p77
+sI225
+S'        else:'
+p78
+sI226
+S'            ccode = compile2(code, layer)'
+p79
+sI227
+S'        exec ccode in environment'
+p80
+sI228
+S'    except HTTP:'
+p81
+sI229
+S'        raise'
+p82
+sI230
+S'    except RestrictedError:'
+p83
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p84
+sI222
+S'    try:'
+p85
+sI223
+S'        if isinstance(code, types.CodeType):'
+p86
+ssS'call'
+p87
+S"(code='# -*- coding: utf-8 -*-\\n# this file is released ...service()\\n\\nresponse._vars=response._caller(room)\\n', environment={'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, ...}, layer=r'C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\controllers/default.py')"
+p88
+sS'func'
+p89
+S'restricted'
+p90
+sa(dp91
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\controllers\\default.py'
+p92
+sg68
+(dp93
+sg74
+I142
+sg75
+(dp94
+I131
+S''
+sI132
+S''
+sI133
+S'def call():'
+p95
+sI134
+S'    """'
+p96
+sI135
+S'    exposes services. for example:'
+p97
+sI136
+S'    http://..../[app]/default/call/jsonrpc'
+p98
+sI137
+S'    decorate with @services.jsonrpc the functions to expose'
+p99
+sI138
+S'    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv'
+p100
+sI139
+S'    """'
+p101
+sI140
+S'    return service()'
+p102
+ssg87
+S'()'
+p103
+sg89
+S'<module>'
+p104
+sa(dp105
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\globals.py'
+p106
+sg68
+(dp107
+S'self'
+p108
+S'undefined'
+p109
+sS'f'
+S'<function room>'
+p110
+ssg74
+I417
+sg75
+(dp111
+I416
+S'        self._vars = None'
+p112
+sI417
+S'        self._caller = lambda f: f()'
+p113
+sI418
+S'        self._view_environment = None'
+p114
+sI419
+S'        self._custom_commit = None'
+p115
+sI420
+S'        self._custom_rollback = None'
+p116
+sI421
+S"        self.generic_patterns = ['*']"
+p117
+sI412
+S"        self.flash = ''            # used by the default view layout"
+p118
+sI413
+S'        self.meta = Storage()      # used by web2py_ajax.html'
+p119
+sI414
+S'        self.menu = []             # used by the default view layout'
+p120
+sI415
+S'        self.files = []            # used by web2py_ajax.html'
+p121
+ssg87
+S'(f=<function room>)'
+p122
+sg89
+S'<lambda>'
+p123
+sa(dp124
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\controllers\\default.py'
+p125
+sg68
+(dp126
+S'db_connection'
+p127
+g109
+sS'db.room_specs.Room_id'
+p128
+S'<pydal.objects.Field object>'
+p129
+sS').select'
+p130
+g109
+sS'room_id'
+p131
+S'3'
+sS'global db'
+p132
+S'<DAL uri="sqlite://storage.sqlite">'
+p133
+sS'db.room_specs'
+p134
+S'<Table room_specs (id, Room_id, User_id, Username, Comments, Score)>'
+p135
+ssg74
+I85
+sg75
+(dp136
+I80
+S'        print request.args'
+p137
+sI81
+S'        room_id = int(request.args[0])'
+p138
+sI82
+S'        room_data = all_rooms[room_id]'
+p139
+sI83
+S'        room_price = room_data["price"]'
+p140
+sI84
+S'        price_rooms = []'
+p141
+sI85
+S"        db_connection = db( (db.room_specs) & (db.room_specs.Room_id == room_id)).select('Username','Comments')"
+p142
+sI86
+S''
+sI87
+S'        for rid, room in all_rooms.items():'
+p143
+sI88
+S'            if room["price"] == room_price and rid != room_id:'
+p144
+sI89
+S'                room["room_id"] = rid'
+p145
+ssg87
+S'()'
+p146
+sg89
+S'room'
+p147
+sa(dp148
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\objects.py'
+p149
+sg68
+(dp150
+S'self.query'
+p151
+S"<Query ((room_specs.Room_id = '3') AND room_specs)>"
+p152
+sS'adapter.select'
+p153
+S'<bound method SQLiteAdapter.select of <pydal.adapters.sqlite.SQLiteAdapter object>>'
+p154
+sS'fields'
+p155
+S'[<pydal.objects.Expression object>, <pydal.objects.Expression object>]'
+p156
+sS'adapter'
+p157
+S'<pydal.adapters.sqlite.SQLiteAdapter object>'
+p158
+sS'attributes'
+p159
+g21
+sS'self'
+p160
+S"<Set ((room_specs.Room_id = '3') AND room_specs)>"
+p161
+ssg74
+I2020
+sg75
+(dp162
+I2016
+S"                                    attributes.get('left', None),"
+p163
+sI2017
+S"                                    attributes.get('orderby', None),"
+p164
+sI2018
+S"                                    attributes.get('groupby', None))"
+p165
+sI2019
+S'        fields = adapter.expand_all(fields, tablenames)'
+p166
+sI2020
+S'        return adapter.select(self.query, fields, attributes)'
+p167
+sI2021
+S''
+sI2022
+S'    def iterselect(self, *fields, **attributes):'
+p168
+sI2023
+S'        adapter = self.db._adapter'
+p169
+sI2024
+S'        tablenames = adapter.tables(self.query,'
+p170
+sI2015
+S"                                    attributes.get('join', None),"
+p171
+ssg87
+S"(self=<Set ((room_specs.Room_id = '3') AND room_specs)>, *fields=[<pydal.objects.Expression object>, <pydal.objects.Expression object>], **attributes={})"
+p172
+sg89
+S'select'
+p173
+sa(dp174
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\sqlite.py'
+p175
+sg68
+(dp176
+S'fields'
+p177
+S'[<pydal.objects.Expression object>, <pydal.objects.Expression object>]'
+p178
+sS'self'
+p179
+S'<pydal.adapters.sqlite.SQLiteAdapter object>'
+p180
+sS').select'
+p181
+S'<bound method SQLiteAdapter.select of <pydal.adapters.sqlite.SQLiteAdapter object>>'
+p182
+sS'attributes'
+p183
+g21
+sS'global SQLiteAdapter'
+p184
+S"<class 'pydal.adapters.sqlite.SQLiteAdapter'>"
+p185
+sS'query'
+p186
+S"<Query ((room_specs.Room_id = '3') AND room_specs)>"
+p187
+sS'builtinsuper'
+p188
+S"<type 'super'>"
+p189
+ssg74
+I123
+sg75
+(dp190
+I118
+S'        Note that the entire database, rather than one record, is locked'
+p191
+sI119
+S'        (it will be locked eventually anyway by the following UPDATE).'
+p192
+sI120
+S'        """'
+p193
+sI121
+S"        if attributes.get('for_update', False) and not 'cache' in attributes:"
+p194
+sI122
+S"            self.execute('BEGIN IMMEDIATE TRANSACTION;')"
+p195
+sI123
+S'        return super(SQLiteAdapter, self).select(query, fields, attributes)'
+p196
+sI124
+S''
+sI125
+S''
+sI126
+S'SPATIALLIBS = {'
+p197
+sI127
+S"    'Windows':'mod_spatialite.dll',"
+p198
+ssg87
+S"(self=<pydal.adapters.sqlite.SQLiteAdapter object>, query=<Query ((room_specs.Room_id = '3') AND room_specs)>, fields=[<pydal.objects.Expression object>, <pydal.objects.Expression object>], attributes={})"
+p199
+sg89
+g173
+sa(dp200
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py'
+p201
+sg68
+(dp202
+S'fields'
+p203
+S'[<pydal.objects.Expression object>, <pydal.objects.Expression object>]'
+p204
+sS'self'
+p205
+S'<pydal.adapters.sqlite.SQLiteAdapter object>'
+p206
+sS'attributes'
+p207
+g21
+sS'self._select_aux'
+p208
+S'<bound method SQLiteAdapter._select_aux of <pydal.adapters.sqlite.SQLiteAdapter object>>'
+p209
+sS'sql'
+p210
+S'"SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);"'
+p211
+ssg74
+I1296
+sg75
+(dp212
+I1291
+S'            return cache_model('
+p213
+sI1292
+S'                key,'
+p214
+sI1293
+S'                lambda self=self,args=args:self._select_aux(*args),'
+p215
+sI1294
+S'                time_expire)'
+p216
+sI1295
+S'        else:'
+p217
+sI1296
+S'            return self._select_aux(sql,fields,attributes)'
+p218
+sI1297
+S''
+sI1298
+S'    def iterselect(self, query, fields, attributes):'
+p219
+sI1299
+S'        sql = self._select(query, fields, attributes)'
+p220
+sI1300
+S"        cacheable = attributes.get('cacheable', False)"
+p221
+ssg87
+S"(self=<pydal.adapters.sqlite.SQLiteAdapter object>, query=<Query ((room_specs.Room_id = '3') AND room_specs)>, fields=[<pydal.objects.Expression object>, <pydal.objects.Expression object>], attributes={})"
+p222
+sg89
+g173
+sa(dp223
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py'
+p224
+sg68
+(dp225
+S'self'
+p226
+S'<pydal.adapters.sqlite.SQLiteAdapter object>'
+p227
+sS'self.execute'
+p228
+S'<bound method SQLiteAdapter.execute of <pydal.adapters.sqlite.SQLiteAdapter object>>'
+p229
+sS'sql'
+p230
+S'"SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);"'
+p231
+ssg74
+I1253
+sg75
+(dp232
+I1248
+S''
+sI1249
+S'    def _select_aux(self, sql, fields, attributes):'
+p233
+sI1250
+S'        args_get = attributes.get'
+p234
+sI1251
+S"        cache = args_get('cache',None)"
+p235
+sI1252
+S'        if not cache:'
+p236
+sI1253
+S'            self.execute(sql)'
+p237
+sI1254
+S'            rows = self._fetchall()'
+p238
+sI1255
+S'        else:'
+p239
+sI1256
+S'            if isinstance(cache, dict):'
+p240
+sI1257
+S"                cache_model = cache['model']"
+p241
+ssg87
+S'(self=<pydal.adapters.sqlite.SQLiteAdapter object>, sql="SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);", fields=[<pydal.objects.Expression object>, <pydal.objects.Expression object>], attributes={})'
+p242
+sg89
+S'_select_aux'
+p243
+sa(dp244
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py'
+p245
+sg68
+(dp246
+S'a'
+S'("SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);",)'
+p247
+sS'self'
+p248
+S'<pydal.adapters.sqlite.SQLiteAdapter object>'
+p249
+sS'b'
+g21
+sS'self.log_execute'
+p250
+S'<bound method SQLiteAdapter.log_execute of <pydal.adapters.sqlite.SQLiteAdapter object>>'
+p251
+ssg74
+I1388
+sg75
+(dp252
+I1383
+S'        self.db._timings.append((command,time.time()-t0))'
+p253
+sI1384
+S'        del self.db._timings[:-TIMINGSSIZE]'
+p254
+sI1385
+S'        return ret'
+p255
+sI1386
+S''
+sI1387
+S'    def execute(self, *a, **b):'
+p256
+sI1388
+S'        return self.log_execute(*a, **b)'
+p257
+sI1389
+S''
+sI1390
+S'    def execute_test_query(self):'
+p258
+sI1391
+S'        return self.execute(self.test_query)'
+p259
+sI1392
+S''
+ssg87
+S'(self=<pydal.adapters.sqlite.SQLiteAdapter object>, *a=("SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);",), **b={})'
+p260
+sg89
+S'execute'
+p261
+sa(dp262
+g66
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py'
+p263
+sg68
+(dp264
+S'a'
+S'("SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);",)'
+p265
+sS'b'
+g21
+sS'self'
+p266
+S'<pydal.adapters.sqlite.SQLiteAdapter object>'
+p267
+sS'ret'
+p268
+g109
+sS'command'
+p269
+S'"SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);"'
+p270
+sS'self.get_cursor'
+p271
+S'<bound method SQLiteAdapter.get_cursor of <pydal.adapters.sqlite.SQLiteAdapter object>>'
+p272
+sS').execute'
+p273
+g109
+ssg74
+I1382
+sg75
+(dp274
+I1377
+S'            command = self.filter_sql_command(command)'
+p275
+sI1378
+S'        if self.db._debug:'
+p276
+sI1379
+S"            self.db.logger.debug('SQL: %s' % command)"
+p277
+sI1380
+S'        self.db._lastsql = command'
+p278
+sI1381
+S'        t0 = time.time()'
+p279
+sI1382
+S'        ret = self.get_cursor().execute(command, *a[1:], **b)'
+p280
+sI1383
+S'        self.db._timings.append((command,time.time()-t0))'
+p281
+sI1384
+S'        del self.db._timings[:-TIMINGSSIZE]'
+p282
+sI1385
+S'        return ret'
+p283
+sI1386
+S''
+ssg87
+S'(self=<pydal.adapters.sqlite.SQLiteAdapter object>, *a=("SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);",), **b={})'
+p284
+sg89
+S'log_execute'
+p285
+sasS'pyver'
+p286
+S'Python 2.7.9: C:\\Users\\omerf\\Desktop\\Web\\web2py\\web2py.exe (prefix: )'
+p287
+sS'session'
+p288
+g61
+(S's\xbc\x01\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">last_orderby</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_query</td><td style="vertical-align:top;">:</td><td><div>db.room_specs.id&gt;0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr></table></div>'
+tRp289
+sS'etype'
+p290
+S"<class 'sqlite3.OperationalError'>"
+p291
+sS'date'
+p292
+S'Fri Dec 30 02:32:03 2016'
+p293
+sS'response'
+p294
+g61
+(S'sE@\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x0898F160&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_paradise_hotel</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-8d5a3fd5-2747-47c7-a1b9-a462dec62366<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>bootstrap3_inline</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logo</td><td style="vertical-align:top;">:</td><td><div><a class="navbar-brand" href="http://www.web2py.com/" id="web2py-logo"><b>web<span>2</span>py</b>&trade;&nbsp;</a></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Anasayfa</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/paradise_hotel/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Sitelerim</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/site</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Bu Uygulama</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Design</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/paradise_hotel</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>Denet\xc3\xa7i</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/controllers/default.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>G\xc3\xb6r\xc3\xbcn\xc3\xbcm</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/views/default/room.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>DB Modeli</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/models/db.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Model Men\xc3\xbc</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/models/menu.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Config.ini</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/private/appconfig.ini</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>\xc5\x9eablon</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/views/layout.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Stil \xc5\x9eablonu</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/static/css/web2py-bootstrap3.css</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Veritaban\xc4\xb1</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/paradise_hotel/appadmin/index</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Hatalar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/errors/paradise_hotel</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Hakk\xc4\xb1nda</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/about/paradise_hotel</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>\xc4\xb0ndir</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/download</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Destek</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/support</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Tan\xc4\xb1t\xc4\xb1m</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/demo_admin</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>H\xc4\xb1zl\xc4\xb1 \xc3\x96rnekler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/examples/default/examples</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>SSS</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/AlterEgo</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Videolar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/videos/</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>\xc3\x9ccretsiz uygulamalar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/appliances</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Eklentiler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/plugins</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Tarifeler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2pyslices.com/</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Kitap</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Online book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>\xc3\x96nz\xc3\xb6s</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/00</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Giri\xc5\x9f</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/01</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Python</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/02</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>G\xc3\xb6z gezdir</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/03</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>\xc3\x87ekirdek</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/04</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>G\xc3\xb6r\xc3\xbcn\xc3\xbcmler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/05</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Veritaban\xc4\xb1</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/06</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Bi\xc3\xa7imler ve Do\xc4\x9frulay\xc4\xb1c\xc4\xb1lar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/07</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>E-posta ve k\xc4\xb1sa mesaj (SMS)</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/08</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Eri\xc5\x9fim Denetimi</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/09</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Hizmetler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/10</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Ajax Tarifleri</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/11</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Bile\xc5\x9fenler ve Eklentiler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/12</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Yay\xc4\xb1nlama tarifleri</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/13</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Di\xc4\x9fer Tarifler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/14</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Helping web2py</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/15</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Buy web2py\'s book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://stores.lulu.com/web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Topluluk</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Gruplar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/usergroups</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Twitter</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://twitter.com/web2py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Canl\xc4\xb1 Sohbet</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://webchat.freenode.net/?channels=web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>web2py</div></td></tr><tr><td><div>python</div></td></tr><tr><td><div>framework</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/room/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_paradise_hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\paradise_hotel\\\\sessions\\\\1de\\\\0cb\\\\127.0.0.1-8d5a3fd5-2747-47c7-a1b9-a462dec62366&#x27;, mode &#x27;rb+&#x27; at 0x08E8C548&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\sessions\\127.0.0.1-8d5a3fd5-2747-47c7-a1b9-a462dec62366</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>33ec5096329962073058949fa8add2d8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-8d5a3fd5-2747-47c7-a1b9-a462dec62366</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_paradise_hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>paradise_hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Paradise Hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/room.html</div></td></tr></table></div>'
+tRp295
+sS'locals'
+p296
+(dp297
+S'a'
+S'("SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);",)'
+p298
+sS'self'
+p299
+S'<pydal.adapters.sqlite.SQLiteAdapter object>'
+p300
+sS'b'
+g21
+sS'command'
+p301
+S'"SELECT  Username, Comments FROM room_specs WHERE ((room_specs.Room_id = \'3\') AND room_specs);"'
+p302
+sS't0'
+p303
+S'1483054323.846'
+p304
+sssS'traceback'
+p305
+S'Traceback (most recent call last):\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\controllers/default.py", line 142, in <module>\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\controllers/default.py", line 85, in room\n    db_connection = db( (db.room_specs) & (db.room_specs.Room_id == room_id)).select(\'Username\',\'Comments\')\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\objects.py", line 2020, in select\n    return adapter.select(self.query, fields, attributes)\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\sqlite.py", line 123, in select\n    return super(SQLiteAdapter, self).select(query, fields, attributes)\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 1296, in select\n    return self._select_aux(sql,fields,attributes)\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 1253, in _select_aux\n    self.execute(sql)\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 1388, in execute\n    return self.log_execute(*a, **b)\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\packages\\dal\\pydal\\adapters\\base.py", line 1382, in log_execute\n    ret = self.get_cursor().execute(command, *a[1:], **b)\nOperationalError: no such column: room_specs\n'
+p306
+s.

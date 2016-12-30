@@ -1,0 +1,31 @@
+{{title = globals().get("title", "")}}
+{{def menu_items():
+   # active = active or ""
+   active = globals().get("active", "")
+   items = [("index", "Home"), ("about_us", "About"),
+            ("rooms", "Rooms"),("login","Login Screen")]
+   output = ""
+   for (path, text) in items:
+      href = URL(path)
+      if path == active:
+          output += str(LI(A(text, _href=href, _class="active")))
+          # output += "<li><a href='%s' class='active'>%s</a></li>" % (href,text)
+      else:
+          output += str(LI(A(text, _href=href)))
+          # output += "<li><a href='%s'>%s</a></li>" % (href,text)
+          pass
+      pass
+   return output   }}
+{{include "header.html"}}
+{{include "navigation.html"}}
+
+
+{{ if  request.controller == "default" and request.function == "index"  :}}
+   {{include "slider.html"}}
+   {{include "gallery.html"}}
+   {{include "nearby.html"}}
+   {{include "testimonails.html"}}
+   {{include "map.html"}}
+  {{pass}}
+
+{{include "footer.html"}}

@@ -1,0 +1,41 @@
+{{include "header.html"}}
+{{include "navigation.html"}}
+<section class="property-dimensions" style="background-image:url(images/background/image-1.jpg);">
+  <div class="auto-container">
+      <!--Sec Title-->
+      <div class="sec-title centered">
+          <h2><strong>{{=data["name"]}} ({{=data["price"]}})</h2>
+              <h2><strong>Score {{=avg}}</h2>
+            <h3>{{=data["room_type"]}}</h3>
+            <div class="desc-text">{{=data["specs"]}}</div>
+
+            {{if session.user:}}
+            <div class="default-form">
+                    <div class="row clearfix">
+                        <div class="col-md-18 col-sm-18 co-xs-18 form-group">
+                            <h2>New Comment</h2>
+                            {{=form}}
+                              </div>
+                            </form>
+
+                            </div>
+                            {{pass}}
+                            <div class="desc-text"><h2>Previous Comments</h2>
+                                <table class="table">
+                                    {{for row in rows:}}
+                                <tr><td>{{=row.Username}}</td>
+                                <td>{{=row.Comments}}</td></tr>
+                                {{pass}}
+                            </table>
+                        </div>
+
+
+        </div>
+        </div>
+
+        </div>
+
+</section>
+
+{{include "footer.html"}}
+{{pass}}

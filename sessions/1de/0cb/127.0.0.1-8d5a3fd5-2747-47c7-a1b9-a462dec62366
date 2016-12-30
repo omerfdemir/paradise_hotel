@@ -1,0 +1,15 @@
+Äcgluon.globals
+Session
+q}q(U
+last_queryqUdb.rooms.id>0qUflashqNU_formkey[rooms/create]q]qU$3c20deb1-fb81-4ffa-99dc-55162be9b616qaUlast_orderbyq	NUuserq
+cpydal.objects
+Row
+q}q(UUsernameqU
+omerfdemirqUPhone_NumberqU+905393884674qUSurnameqUDemirqUNameqU√ñmer FarukqUupdate_recordqcpydal.helpers.classes
+RecordUpdater
+q)Åq}q(Ucolsetqh}q(hhhhhhhhhhUGenderqUMaleqUAddressqUMuƒülaqUPasswordqU
+farukd1995q UEmail_Addressq!Ud.omerr.faruk@gmail.comq"Uidq#äUdelete_recordq$cpydal.helpers.classes
+RecordDeleter
+q%)Åq&}q'(U	tablenameq(Uuserq)Udbq*cpydal.base
+DAL_unpickler
+q+U 8f8c2c36867443c686d3bcdf72be5bc3q,ÖRq-Uidq.äubuÖRh(h)h*h-h.äubhhhhhh h!h"h#äh$h&uÖRq/U_formkey[room_specs/1]q0]q1U$16bbae3c-7198-4f38-b2d9-d53af08cd3c1q2aU_formkey[user/create]q3]q4U$ac3d91ce-2174-4ee6-82d5-bd154d777f9eq5aU_formkey[default]q6]q7(U$a1aa4e98-e116-4a99-9a8f-2c345ecba550q8U$abeedbd1-dea5-4f4c-a456-92d061b0e87eq9U$21b9138d-0a77-40d4-ada3-9c5b1b15f43fq:U$3b03c17a-cc02-44fb-a8f9-88fed5cce210q;U$1eab8994-f7f9-443a-b620-d09d85e3f098q<U$bb43783c-5ab0-4b4e-bd94-dc95ddf4fe23q=U$76153133-4a3f-4254-b484-606bb7c24fdcq>U$bce11fb6-303e-4764-bd27-0f5c395ddad3q?U$45efd44a-80ce-4e32-936e-fe7a2f7273d1q@U$6b2770fe-b35c-46f4-b4c7-b7528fbc9f31qAeU_formkey[reservation/create]qB]qC(U$29b24311-cd10-42a4-b1da-1bc6d6c5882cqDU$c421dfc1-5675-4882-878d-ce481117482cqEeuÖRqF.

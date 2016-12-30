@@ -1,0 +1,85 @@
+
+<div class="navbar-collapse collapse clearfix">
+    <ul class="navigation clearfix">
+      {{
+          menu = [ ("index", "Home Page"),("rooms", "Rooms"),("gallery", "Gallery"),("contact", "Contact "),
+        ("about_us","About Us")  ]
+          for (path, text) in menu:
+             if request.controller == "default" and request.function== path:
+                response.write(LI(A(text, _href=URL('default',path), _class="active" )))
+             else:
+                response.write(LI(A(text, _href=URL('default',path) )))
+       }}
+           {{pass}}
+       {{pass}}
+
+         <li class="dropdown"><a href="#">User</a>
+           <ul>
+             <li>
+       {{
+           menu2 = [ ("login", "Login Screen"),("register","Register")]
+           for (path, text) in menu2:
+              if request.controller == "user" and request.function== path:
+                 response.write(LI(A(text, _href=URL('user',path), _class="active" )))
+              else:
+                 response.write(LI(A(text, _href=URL('user',path) )))
+        }}
+            {{pass}}
+        {{pass}}
+      </li>
+    </ul>
+</div>
+</nav><!-- Main Menu End-->
+
+<div class="btn-outer"><a href="contact.html" class="theme-btn visit-btn">Schedule Visit</a></div>
+
+</div>
+</div>
+</div>
+
+
+<!--Sticky Header-->
+<div class="sticky-header">
+<div class="auto-container clearfix">
+<!--Logo-->
+<div class="logo pull-left">
+<a href="index.html" class="img-responsive"><img src="/paradise_hotel/static/images/logo-small.png" alt="Homestate"></a>
+</div>
+
+<!--Right Col-->
+<div class="right-col pull-right">
+<!-- Main Menu -->
+<nav class="main-menu">
+<div class="navbar-header">
+    <!-- Toggle Button -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
+</div>
+
+<div class="navbar-collapse collapse clearfix">
+  <ul class="navigation clearfix">
+    {{
+        menu = [ ("index", "Home Page"),("rooms", "Rooms"),("gallery", "Gallery"),("contact", "Contact "),
+      ("about_us", "About Us"),("login","Login Page") ]
+        for (path, text) in menu:
+           if request.controller == "default" and request.function== path:
+              response.write(LI(A(text, _href=URL('default',path), _class="active" )))
+           else:
+              response.write(LI(A(text, _href=URL('default',path) )))
+     }}
+         {{pass}}
+     {{pass}}
+  </ul>
+
+</div>
+</nav><!-- Main Menu End-->
+</div>
+
+</div>
+</div><!--End Bounce In Header-->
+
+</header>
+<!--End Main Header -->

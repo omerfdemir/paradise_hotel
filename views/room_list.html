@@ -1,0 +1,25 @@
+<!--Property Dimensions-->
+<section class="property-dimensions" style="background-image:url(images/background/image-1.jpg);">
+  <div class="auto-container">
+      <!--Sec Title-->
+      <div class="sec-title centered">
+          <h2><strong>Rooms</strong> </h2>
+          <!--  <div class="desc-text">Lorem ipsum dolor sit amet, ea pro error pertinacia, nam id munere detraxit. Wisi decore discere eum an, autem erant usu eu, per ubique legendos intellegam in. An est melius vivendo. Hinc temporibus nec te, vero consetetur an qui nam.</div>
+        </div>-->
+
+        <div class="outer-container">
+          <!--Tabs Box-->
+            <div class="tabs-box">
+                <!--Tab Buttons-->
+                <div class="tab-buttons clearfix">
+                    {{for room_id, data in rooms_data:}}
+                    <a OnClick= href="{{=URL('room', args=[room_id])}}" class="tab-btn button">{{=data["name"]}}</a>
+                      {{pass}}
+               </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,386 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.TypeError'> unbound method xml() must be called with FORM instance as first argument (got nothing instead)"
+p3
+sS'layer'
+p4
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\views\\user/login.html'
+p5
+sS'code'
+p6
+S'response.write(\'<!DOCTYPE html>\\n<html>\\n<head>\\n<meta charset="utf-8">\\n<title>\', escape=False)\nresponse.write(page_title)\nresponse.write(\'</title>\\n<!-- Stylesheets -->\\n<link href="/paradise_hotel/static/css/bootstrap.css" rel="stylesheet">\\n<link href="/paradise_hotel/static/css/revolution-slider.css" rel="stylesheet">\\n<link href="/paradise_hotel/static/css/style.css" rel="stylesheet">\\n<!-- Responsive -->\\n<meta http-equiv="X-UA-Compatible" content="IE=edge">\\n<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">\\n<link href="/paradise_hotel/static/css/responsive.css" rel="stylesheet">\\n<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->\\n<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->\\n</head>\\n\\n<body>\\n<div class="page-wrapper">\\n\\n\\n\\n    <!-- Main Header-->\\n    <header class="main-header">\\n\\n    \\t<!--Header-Upper-->\\n        <div class="header-upper">\\n        \\t<div class="auto-container">\\n            \\t<div class="clearfix">\\n\\n                \\t<div class="pull-left logo-outer">\\n                    \\t<div class="logo"><a href="#"><img src="/paradise_hotel/static/images/logo.jpg" alt="" title="Homestate"></a></div>\\n                    </div>\\n\\n                    <div class="pull-right upper-right clearfix">\\n\\n                        <!--Info Box-->\\n                        <div class="upper-column info-box">\\n                        \\t<div class="icon-box"><span class="flaticon-technology-2"></span></div>\\n                            <ul>\\n                            \\t<li><strong>320 4567 345</strong></li>\\n                                <li><a href="#">info@example.com</a></li>\\n                            </ul>\\n                        </div>\\n\\n                        <!--Info Box-->\\n                        <div class="upper-column info-box">\\n                        \\t<div class="icon-box"><span class="flaticon-location-2"></span></div>\\n                            <ul>\\n                            \\t<li><strong>Stadium Market</strong></li>\\n                                <li>Mirpur Road No  11</li>\\n                            </ul>\\n                        </div>\\n                        \', escape=False)\nif session.user:\n    response.write(\'\\n                        <!--Info Box-->\\n                            <div class="upper-column info-box">\\n                                <ul>\\n                                    <li><strong>Hello</strong></li>\\n                                    <li>Mirpur Road No  11</li>\\n                                </ul>\\n                            </div>\\n                            \', escape=False)\nelse:\n    response.write(\'\\n                        <!--Info Box-->\\n                            <div class="upper-column info-box">\\n                                <ul>\\n                                \\t<li><strong>Stadium Market</strong></li>\\n                                    <li>Mirpur Road No  11</li>\\n                                </ul>\\n                            </div>\\n\\n                    </div>\\n                    \', escape=False)\n    pass\nresponse.write(\'\\n                    \', escape=False)\npass\nresponse.write(\'\\n\\n                </div>\\n            </div>\\n        </div>\\n\\n        <!--Header-Lower-->\\n        <div class="header-lower">\\n        \\t<!--Background Layer-->\\n            <div class="bg-layer"></div>\\n\\n\\n        \\t<div class="auto-container">\\n            \\t<div class="nav-outer clearfix">\\n                    <!-- Main Menu -->\\n                    <nav class="main-menu">\\n                        <div class="navbar-header">\\n                            <!-- Toggle Button -->\\n                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\\n                            <span class="icon-bar"></span>\\n                            <span class="icon-bar"></span>\\n                            <span class="icon-bar"></span>\\n                            </button>\\n                        </div>\\n\', escape=False)\nresponse.write(\'\\n\', escape=False)\nresponse.write(\'\\n<div class="navbar-collapse collapse clearfix">\\n    <ul class="navigation clearfix">\\n      \', escape=False)\nmenu = [ ("index", "Home Page"),("rooms", "Rooms"),("gallery", "Gallery"),("contact", "Contact "),\n("about_us","About Us")  ]\nfor (path, text) in menu:\n    if request.controller == "default" and request.function== path:\n        response.write(LI(A(text, _href=URL(\'default\',path), _class="active" )))\n    else:\n        response.write(LI(A(text, _href=URL(\'default\',path) )))\n        response.write(\'\\n           \', escape=False)\n        pass\n    response.write(\'\\n       \', escape=False)\n    pass\nresponse.write(\'\\n\\n         <li class="dropdown"><a href="#">User</a>\\n           <ul>\\n             <li>\\n       \', escape=False)\nmenu2 = [ ("login", "Login Screen"),("register","Register") ]\nfor (path, text) in menu2:\n    if request.controller == "user" and request.function== path:\n        response.write(LI(A(text, _href=URL(\'user\',path), _class="active" )))\n    else:\n        response.write(LI(A(text, _href=URL(\'user\',path) )))\n        response.write(\'\\n            \', escape=False)\n        pass\n    response.write(\'\\n        \', escape=False)\n    pass\nresponse.write(\'\\n      </li>\\n    </ul>\\n</div>\\n</nav><!-- Main Menu End-->\\n\\n<div class="btn-outer"><a href="contact.html" class="theme-btn visit-btn">Schedule Visit</a></div>\\n\\n</div>\\n</div>\\n</div>\\n\\n\\n<!--Sticky Header-->\\n<div class="sticky-header">\\n<div class="auto-container clearfix">\\n<!--Logo-->\\n<div class="logo pull-left">\\n<a href="index.html" class="img-responsive"><img src="/paradise_hotel/static/images/logo-small.png" alt="Homestate"></a>\\n</div>\\n\\n<!--Right Col-->\\n<div class="right-col pull-right">\\n<!-- Main Menu -->\\n<nav class="main-menu">\\n<div class="navbar-header">\\n    <!-- Toggle Button -->\\n    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\\n    <span class="icon-bar"></span>\\n    <span class="icon-bar"></span>\\n    <span class="icon-bar"></span>\\n    </button>\\n</div>\\n\\n<div class="navbar-collapse collapse clearfix">\\n  <ul class="navigation clearfix">\\n    \', escape=False)\nmenu = [ ("index", "Home Page"),("rooms", "Rooms"),("gallery", "Gallery"),("contact", "Contact "),\n("about_us", "About Us"),("login","Login Page") ]\nfor (path, text) in menu:\n    if request.controller == "default" and request.function== path:\n        response.write(LI(A(text, _href=URL(\'default\',path), _class="active" )))\n    else:\n        response.write(LI(A(text, _href=URL(\'default\',path) )))\n        response.write(\'\\n         \', escape=False)\n        pass\n    response.write(\'\\n     \', escape=False)\n    pass\nresponse.write(\'\\n  </ul>\\n\\n</div>\\n</nav><!-- Main Menu End-->\\n</div>\\n\\n</div>\\n</div><!--End Bounce In Header-->\\n\\n</header>\\n<!--End Main Header -->\\n\', escape=False)\nresponse.write(\'\\n<!--Page Title-->\\n<section class="page-title" style="background-image:url(images/background/bg-page-title.jpg);">\\n  <div class="auto-container">\\n      <div class="sec-title">\\n            <h1>Login Screen</h1>\\n        </div>\\n    </div>\\n</section>\\n\\n\\n    <!--Breadcrumb-->\\n    <div class="breadcrumb-outer">\\n    \\t<div class="auto-container">\\n        \\t<div class="bread-crumb text-center"><a href="/paradise_hotel/default/index.html">Home</a> / <a href="#" class="current">Login Screen</a></div>\\n        </div>\\n    </div>\\n\\n\\n\\n\\n\\n    <!--Contact Section-->\\n    <section class="contact-section no-padd-top">\\n    \\t<div class="auto-container">\\n        \\t<div class="row clearfix">\\n\\n                \\t<h2><strong>Login</strong></h2>\\n                    <div>\', escape=False)\nresponse.write(response.flash or \'\')\nresponse.write(\'</div>\\n                    <!--Default Form-->\\n                    <div class="default-form">\\n                    <div class="row clearfix">\\n                        <div class="col-md-18 col-sm-18 co-xs-18 form-group">\\n                            \', escape=False)\nresponse.write(form)\nresponse.write(\'\\n                              </div>\\n                            </form>\\n\\n                            </div>\\n\\n\\n                        </form>\\n                    </div>\\n                </div>\\n              </div>\\n          </div>\\n            </section>\\n\', escape=False)\nresponse.write(\'<!--Main Footer-->\\n<footer class="main-footer">\\n    <!--Footer Bottom-->\\n  <div class="footer-bottom">\\n            <!--Copyright-->\\n            <div class="copyright text-center social-links">\\n              <a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>\\n              <a href="#" class="twitter img-circle"><span class="fa fa-twitter"></span></a>\\n              <a href="#" class="google-plus img-circle"><span class="fa fa-google-plus"></span></a>\\n              <a href="#" class="linkedin img-circle"><span class="fa fa-pinterest-p"></span></a>\\n              <a href="#" class="linkedin img-circle"><span class="fa fa-instagram"></span></a></div>\\n            <div class="copyright text-center">Paradise Hotel 2016 &copy; </div>\\n    </div>\\n\\n</footer>\\n\\n\\n</div>\\n<!--End pagewrapper-->\\n\\n<!--Scroll to top-->\\n<div class="scroll-to-top scroll-to-target" data-target=".main-header"><span class="icon flaticon-building"></span></div>\\n\\n\\n<script src="/paradise_hotel/static/js/jquery.js"></script>\\n<script src="/paradise_hotel/static/js/bootstrap.min.js"></script>\\n<script src="/paradise_hotel/static/js/revolution.min.js"></script>\\n<script src="/paradise_hotel/static/js/jquery.fancybox.pack.js"></script>\\n<script src="/paradise_hotel/static/js/isotope.js"></script>\\n<script src="/paradise_hotel/static/js/owl.js"></script>\\n<!--Locations Map JS-->\\n<script src="http://maps.google.com/maps/api/js?v=3"></script>\\n<script src="/paradise_hotel/static/js/jquery.gmap.js"></script>\\n<script src="/paradise_hotel/static/js/map-script.js"></script>\\n<!--Locations Map End-->\\n<script src="/paradise_hotel/static/js/wow.js"></script>\\n<script src="/paradise_hotel/static/js/script.js"></script>\\n</body>\\n</html>\\n\', escape=False)\nresponse.write(\'\\n\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.TypeError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.TypeError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.TypeError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.TypeError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.TypeError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.TypeError object>'
+p23
+sS'__reduce__'
+p24
+S'<built-in method __reduce__ of exceptions.TypeError object>'
+p25
+sS'__str__'
+p26
+S"<method-wrapper '__str__' of exceptions.TypeError object>"
+p27
+sS'__format__'
+p28
+S'<built-in method __format__ of exceptions.TypeError object>'
+p29
+sS'__getattribute__'
+p30
+S"<method-wrapper '__getattribute__' of exceptions.TypeError object>"
+p31
+sS'__class__'
+p32
+S"<type 'exceptions.TypeError'>"
+p33
+sS'__unicode__'
+p34
+S'<built-in method __unicode__ of exceptions.TypeError object>'
+p35
+sS'__delattr__'
+p36
+S"<method-wrapper '__delattr__' of exceptions.TypeError object>"
+p37
+sS'__subclasshook__'
+p38
+S'<built-in method __subclasshook__ of type object>'
+p39
+sS'__repr__'
+p40
+S"<method-wrapper '__repr__' of exceptions.TypeError object>"
+p41
+sS'args'
+p42
+S"('unbound method xml() must be called with FORM instance as first argument (got nothing instead)',)"
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.TypeError object>'
+p47
+sS'__doc__'
+p48
+S"'Inappropriate argument type.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.TypeError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S'unbound method xml() must be called with FORM instance as first argument (got nothing instead)'
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S'syW\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>paradise_hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>user</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_paradise_hotel</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-07cbfb93-ec4f-4fe0-b56c-ac59ff951e43<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>tr-TR,tr;q=0.8,en-US;q=0.6,en;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_paradise_hotel=127.0.0.1-07cbfb93-ec4f-4fe0-b56c-ac59ff951e43</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_DNT</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/paradise_hotel/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/paradise_hotel/user/login</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>59610</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>OMERF-PC</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\welcome\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\paradise_hotel\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\admin\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x2d92cd8: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;OMERF-PC&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>tr-TR,tr;q=0.8,en-US;q=0.6,en;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_paradise_hotel=127.0.0.1-07cbfb93-ec4f-4fe0-b56c-ac59ff951e43</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_dnt</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/paradise_hotel/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>169.254.217.175</div></td></tr><tr><td><div>fe80::587f:ee15:38b8:54c2%15</div></td></tr><tr><td><div>fe80::2182:71e8:e91c:decf%17</div></td></tr><tr><td><div>192.168.1.101</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.200.1</div></td></tr><tr><td><div>192.168.204.2</div></td></tr><tr><td><div>fe80::8026:209c:c3bd:c7c7%14</div></td></tr><tr><td><div>169.254.177.77</div></td></tr><tr><td><div>fe80::5511:d8ff:d5f:b14d%7</div></td></tr><tr><td><div>fe80::71fc:18ad:f78a:d9af%16</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>OMERF-PC</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/paradise_hotel/user/login</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>59610</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/paradise_hotel/user/login</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>OMERF-PC</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x0218D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x02D0F298&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x07F03BF0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x0218D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x02D0F298&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x07F03BF0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>login</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\welcome\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\paradise_hotel\\\\&#x27;, &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\admin\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x2d92cd8: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;OMERF-PC&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>169.254.217.175</div></td></tr><tr><td><div>fe80::587f:ee15:38b8:54c2%15</div></td></tr><tr><td><div>fe80::2182:71e8:e91c:decf%17</div></td></tr><tr><td><div>192.168.1.101</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.200.1</div></td></tr><tr><td><div>192.168.204.2</div></td></tr><tr><td><div>fe80::8026:209c:c3bd:c7c7%14</div></td></tr><tr><td><div>169.254.177.77</div></td></tr><tr><td><div>fe80::5511:d8ff:d5f:b14d%7</div></td></tr><tr><td><div>fe80::71fc:18ad:f78a:d9af%16</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>OMERF-PC</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.14.6-stable+timestamp.2016.05.10.00.21.47</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 12, 29, 18, 47, 7, 591000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/paradise_hotel/user/login</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 12, 29, 15, 47, 7, 591000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x0836E910&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 0835E068, file "C:\\User...ns\\paradise_hotel\\views\\user/login.html", line 1>'
+p69
+ssS'lnum'
+p70
+I227
+sS'lines'
+p71
+(dp72
+I224
+S'            ccode = code'
+p73
+sI225
+S'        else:'
+p74
+sI226
+S'            ccode = compile2(code, layer)'
+p75
+sI227
+S'        exec ccode in environment'
+p76
+sI228
+S'    except HTTP:'
+p77
+sI229
+S'        raise'
+p78
+sI230
+S'    except RestrictedError:'
+p79
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p80
+sI222
+S'    try:'
+p81
+sI223
+S'        if isinstance(code, types.CodeType):'
+p82
+ssS'call'
+p83
+S'(code="response.write(\'<!DOCTYPE html>\\\\n<html>\\\\n<head>\\\\... escape=False)\\nresponse.write(\'\\\\n\', escape=False)", environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'ASSIGNJS\': <function ASSIGNJS>, \'AppConfig\': <function AppConfig>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, ...}, layer=r\'C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\views\\user/login.html\')'
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\views\\user\\login.html'
+p88
+sg64
+(dp89
+sg70
+I52
+sg71
+(dp90
+I43
+S"        response.write(LI(A(text, _href=URL('default',path) )))"
+p91
+sI44
+S"        response.write('\\n         ', escape=False)"
+p92
+sI45
+S'        pass'
+p93
+sI46
+S"    response.write('\\n     ', escape=False)"
+p94
+sI47
+S'    pass'
+p95
+sI48
+S"response.write('\\n  </ul>\\n\\n</div>\\n</nav><!-- Main Menu End-->\\n</div>\\n\\n</div>\\n</div><!--End Bounce In Header-->\\n\\n</header>\\n<!--End Main Header -->\\n', escape=False)"
+p96
+sI49
+S'response.write(\'\\n<!--Page Title-->\\n<section class="page-title" style="background-image:url(images/background/bg-page-title.jpg);">\\n  <div class="auto-container">\\n      <div class="sec-title">\\n            <h1>Login Screen</h1>\\n        </div>\\n    </div>\\n</section>\\n\\n\\n    <!--Breadcrumb-->\\n    <div class="breadcrumb-outer">\\n    \\t<div class="auto-container">\\n        \\t<div class="bread-crumb text-center"><a href="/paradise_hotel/default/index.html">Home</a> / <a href="#" class="current">Login Screen</a></div>\\n        </div>\\n    </div>\\n\\n\\n\\n\\n\\n    <!--Contact Section-->\\n    <section class="contact-section no-padd-top">\\n    \\t<div class="auto-container">\\n        \\t<div class="row clearfix">\\n\\n                \\t<h2><strong>Login</strong></h2>\\n                    <div>\', escape=False)'
+p97
+sI50
+S"response.write(response.flash or '')"
+p98
+sI51
+S'response.write(\'</div>\\n                    <!--Default Form-->\\n                    <div class="default-form">\\n                    <div class="row clearfix">\\n                        <div class="col-md-18 col-sm-18 co-xs-18 form-group">\\n                            \', escape=False)'
+p99
+sI52
+S'response.write(form)'
+p100
+sI53
+S"response.write('\\n                              </div>\\n                            </form>\\n\\n                            </div>\\n\\n\\n                        </form>\\n                    </div>\\n                </div>\\n              </div>\\n          </div>\\n            </section>\\n', escape=False)"
+p101
+sI54
+S'response.write(\'<!--Main Footer-->\\n<footer class="main-footer">\\n    <!--Footer Bottom-->\\n  <div class="footer-bottom">\\n            <!--Copyright-->\\n            <div class="copyright text-center social-links">\\n              <a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>\\n              <a href="#" class="twitter img-circle"><span class="fa fa-twitter"></span></a>\\n              <a href="#" class="google-plus img-circle"><span class="fa fa-google-plus"></span></a>\\n              <a href="#" class="linkedin img-circle"><span class="fa fa-pinterest-p"></span></a>\\n              <a href="#" class="linkedin img-circle"><span class="fa fa-instagram"></span></a></div>\\n            <div class="copyright text-center">Paradise Hotel 2016 &copy; </div>\\n    </div>\\n\\n</footer>\\n\\n\\n</div>\\n<!--End pagewrapper-->\\n\\n<!--Scroll to top-->\\n<div class="scroll-to-top scroll-to-target" data-target=".main-header"><span class="icon flaticon-building"></span></div>\\n\\n\\n<script src="/paradise_hotel/static/js/jquery.js"></script>\\n<script src="/paradise_hotel/static/js/bootstrap.min.js"></script>\\n<script src="/paradise_hotel/static/js/revolution.min.js"></script>\\n<script src="/paradise_hotel/static/js/jquery.fancybox.pack.js"></script>\\n<script src="/paradise_hotel/static/js/isotope.js"></script>\\n<script src="/paradise_hotel/static/js/owl.js"></script>\\n<!--Locations Map JS-->\\n<script src="http://maps.google.com/maps/api/js?v=3"></script>\\n<script src="/paradise_hotel/static/js/jquery.gmap.js"></script>\\n<script src="/paradise_hotel/static/js/map-script.js"></script>\\n<!--Locations Map End-->\\n<script src="/paradise_hotel/static/js/wow.js"></script>\\n<script src="/paradise_hotel/static/js/script.js"></script>\\n</body>\\n</html>\\n\', escape=False)'
+p102
+sI55
+S"response.write('\\n', escape=False)"
+p103
+ssg83
+S'()'
+p104
+sg85
+S'<module>'
+p105
+sa(dp106
+g62
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\globals.py'
+p107
+sg64
+(dp108
+S'self.body.write'
+p109
+S'<built-in method write of cStringIO.StringO object>'
+p110
+sS'self.body'
+p111
+S'<cStringIO.StringO object>'
+p112
+sS'self'
+p113
+S"<Storage {'body': <cStringIO.StringO object at 0...mbda> at 0x07F03B70>, 'view': 'user/login.html'}>"
+p114
+sS'global xmlescape'
+p115
+S'<function xmlescape>'
+p116
+sS'data'
+p117
+S"<class 'gluon.html.FORM'>"
+p118
+ssg70
+I430
+sg71
+(dp119
+I425
+S''
+sI426
+S'    def write(self, data, escape=True):'
+p120
+sI427
+S'        if not escape:'
+p121
+sI428
+S'            self.body.write(str(data))'
+p122
+sI429
+S'        else:'
+p123
+sI430
+S'            self.body.write(xmlescape(data))'
+p124
+sI431
+S''
+sI432
+S'    def render(self, *a, **b):'
+p125
+sI433
+S'        from compileapp import run_view_in'
+p126
+sI434
+S'        if len(a) > 2:'
+p127
+ssg83
+S"(self=<Storage {'body': <cStringIO.StringO object at 0...mbda> at 0x07F03B70>, 'view': 'user/login.html'}>, data=<class 'gluon.html.FORM'>, escape=True)"
+p128
+sg85
+S'write'
+p129
+sa(dp130
+g62
+S'C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\html.py'
+p131
+sg64
+(dp132
+S'data'
+p133
+S"<class 'gluon.html.FORM'>"
+p134
+sS'data.xml'
+p135
+S'<unbound method FORM.xml>'
+p136
+ssg70
+I131
+sg71
+(dp137
+I128
+S''
+sI129
+S'    # first try the xml function'
+p138
+sI130
+S"    if hasattr(data, 'xml') and callable(data.xml):"
+p139
+sI131
+S'        return data.xml()'
+p140
+sI132
+S''
+sI133
+S'    # otherwise, make it a string'
+p141
+sI134
+S'    if not isinstance(data, (str, unicode)):'
+p142
+sI135
+S'        data = str(data)'
+p143
+sI126
+S'        quote: optional (default False)'
+p144
+sI127
+S'    """'
+p145
+ssg83
+S"(data=<class 'gluon.html.FORM'>, quote=True)"
+p146
+sg85
+S'xmlescape'
+p147
+sasS'pyver'
+p148
+S'Python 2.7.9: C:\\Users\\omerf\\Desktop\\Web\\web2py\\web2py.exe (prefix: )'
+p149
+sS'session'
+p150
+g57
+(S's\xb2\x00\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div>Wrong username or password</div></td></tr></table></div>'
+tRp151
+sS'etype'
+p152
+S"<type 'exceptions.TypeError'>"
+p153
+sS'date'
+p154
+S'Thu Dec 29 18:47:07 2016'
+p155
+sS'response'
+p156
+g57
+(S'sS@\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x0836E100&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_paradise_hotel</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-07cbfb93-ec4f-4fe0-b56c-ac59ff951e43<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div>Wrong username or password</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>bootstrap3_inline</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logo</td><td style="vertical-align:top;">:</td><td><div><a class="navbar-brand" href="http://www.web2py.com/" id="web2py-logo"><b>web<span>2</span>py</b>&trade;&nbsp;</a></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Anasayfa</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/paradise_hotel/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Sitelerim</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/site</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Bu Uygulama</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Design</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/paradise_hotel</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>Denet\xc3\xa7i</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/controllers/user.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>G\xc3\xb6r\xc3\xbcn\xc3\xbcm</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/views/user/login.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>DB Modeli</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/models/db.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Model Men\xc3\xbc</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/models/menu.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Config.ini</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/private/appconfig.ini</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>\xc5\x9eablon</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/views/layout.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Stil \xc5\x9eablonu</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/paradise_hotel/static/css/web2py-bootstrap3.css</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Veritaban\xc4\xb1</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/paradise_hotel/appadmin/index</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Hatalar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/errors/paradise_hotel</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Hakk\xc4\xb1nda</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/about/paradise_hotel</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>\xc4\xb0ndir</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/download</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Destek</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/support</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Tan\xc4\xb1t\xc4\xb1m</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/demo_admin</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>H\xc4\xb1zl\xc4\xb1 \xc3\x96rnekler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/examples/default/examples</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>SSS</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/AlterEgo</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Videolar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/videos/</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>\xc3\x9ccretsiz uygulamalar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/appliances</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Eklentiler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/plugins</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Tarifeler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2pyslices.com/</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Kitap</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Online book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>\xc3\x96nz\xc3\xb6s</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/00</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Giri\xc5\x9f</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/01</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Python</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/02</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>G\xc3\xb6z gezdir</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/03</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>\xc3\x87ekirdek</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/04</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>G\xc3\xb6r\xc3\xbcn\xc3\xbcmler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/05</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Veritaban\xc4\xb1</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/06</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Bi\xc3\xa7imler ve Do\xc4\x9frulay\xc4\xb1c\xc4\xb1lar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/07</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>E-posta ve k\xc4\xb1sa mesaj (SMS)</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/08</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Eri\xc5\x9fim Denetimi</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/09</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Hizmetler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/10</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Ajax Tarifleri</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/11</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Bile\xc5\x9fenler ve Eklentiler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/12</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Yay\xc4\xb1nlama tarifleri</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/13</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Di\xc4\x9fer Tarifler</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/14</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Helping web2py</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/15</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Buy web2py\'s book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://stores.lulu.com/web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Topluluk</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Gruplar</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/usergroups</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Twitter</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://twitter.com/web2py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Canl\xc4\xb1 Sohbet</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://webchat.freenode.net/?channels=web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>web2py</div></td></tr><tr><td><div>python</div></td></tr><tr><td><div>framework</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^user/\\w+\\.py$</div></td></tr><tr><td><div>^user/login/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_paradise_hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;C:\\\\Users\\\\omerf\\\\Desktop\\\\Web\\\\web2py\\\\applications\\\\paradise_hotel\\\\sessions\\\\077\\\\0f7\\\\127.0.0.1-07cbfb93-ec4f-4fe0-b56c-ac59ff951e43&#x27;, mode &#x27;rb+&#x27; at 0x089D23E8&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\sessions\\127.0.0.1-07cbfb93-ec4f-4fe0-b56c-ac59ff951e43</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>860a89d12e6e53f8bdf8badc033fb5e1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-07cbfb93-ec4f-4fe0-b56c-ac59ff951e43</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_paradise_hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>paradise_hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Paradise Hotel</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>user/login.html</div></td></tr></table></div>'
+tRp157
+sS'locals'
+p158
+(dp159
+S'quote'
+p160
+S'True'
+p161
+sS'data'
+p162
+S"<class 'gluon.html.FORM'>"
+p163
+sssS'traceback'
+p164
+S'Traceback (most recent call last):\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\applications\\paradise_hotel\\views\\user/login.html", line 52, in <module>\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\globals.py", line 430, in write\n    self.body.write(xmlescape(data))\n  File "C:\\Users\\omerf\\Desktop\\Web\\web2py\\gluon\\html.py", line 131, in xmlescape\n    return data.xml()\nTypeError: unbound method xml() must be called with FORM instance as first argument (got nothing instead)\n'
+p165
+s.

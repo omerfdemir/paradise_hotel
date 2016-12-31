@@ -82,6 +82,7 @@ def room():
         room_data = all_rooms[room_id]
         room_price = room_data["price"]
         price_rooms = []
+        session.rooms = room_id
         db_connection = db( (db.room_specs.Room_id == room_id)).select()
 
 
@@ -92,10 +93,11 @@ def room():
         form = FORM('Comment',INPUT(_name='comment'),
                     'Score',INPUT(_name='score',requires=IS_IN_SET({1,2,3,4,5,6,7,8,9,10})),
                     INPUT(_type='submit',_value='Submit'))
+
         rows = db((db.room_specs.Room_id == room_id)).select('Comments','Username')
         sqlstring = "select avg(Score) from room_specs where Room_id = " + str(room_id)
         avg = db.executesql(sqlstring)
-
+        print room_id
         if form.process().accepted:
             db.room_specs.insert(Room_id =room_id ,
                                 Comments=form.vars.comment,
@@ -103,6 +105,18 @@ def room():
                                 User_id=session.user.id,
                                 Username=session.user.Username)
             return redirect(request.env.http_referer)
+
+#        form2 = FORM('Check-İn',INPUT(_name='indate',_type='date'),
+#                        'Check-Out',INPUT(_name='outdate',_type='date'),
+#                        INPUT(_type='submit',_value='Submit'))
+#
+#        if form2.process().accepted:
+#            db.reservation.insert(User_id =session.user.id ,
+#                                        Room_id=room_id,
+#                                        inDate=form2.vars.indate,
+#                                        outDate=form2.vars.outdate,
+#                                        )
+
         #scores = db((db.room_specs.Room_id == room_id)).select('Score')
         #sum_score = 0
         #count = 0
@@ -120,6 +134,29 @@ def room():
 def rooms():
     return dict(page_title="Rooms",rooms_data=all_rooms.items())
 
+def account():
+    print request.args
+    account_id = request.args(1)
+    user_id = session.user.id
+    #request.args(0)= account_id
+    rows = db((db.reservation.User_id==user_id)&(db.rooms.id==db.reservation.Room_id)).select('Type','inDate','outDate')
+    return dict(page_title="Account",rows=rows)
+def reservation():
+    user_id = session.user.id
+    room_id = session.rooms
+
+    form = FORM('Check-in    : ',INPUT(_name='indate',_type='date'),BR(),
+                'Check-Out   :  ',INPUT(_name='outdate',_type='date'),BR(),
+                INPUT(_type='submit',_value='Submit'))
+    if form.process().accepted:
+        response.flash = "Reservation accepted.Happy Holiday!"
+        db.reservation.insert(User_id =user_id ,
+                                Room_id=room_id,
+                                inDate=form.vars.indate,
+                                outDate=form.vars.outdate,
+                                )
+    print room_id
+    return dict(page_title="Reservation",form=form)
 
 
 

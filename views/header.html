@@ -29,7 +29,7 @@
             	<div class="clearfix">
 
                 	<div class="pull-left logo-outer">
-                    	<div class="logo"><a href="#"><img src="/paradise_hotel/static/images/logo.jpg" alt="" title="Homestate"></a></div>
+                    	<div class="logo"><a href="index"><img src="/paradise_hotel/static/images/logo.jpg" alt="" title="Homestate"></a></div>
                     </div>
 
                     <div class="pull-right upper-right clearfix">
@@ -55,10 +55,9 @@
                         <!--Info Box-->
                             <div class="upper-column info-box">
                                 <ul>
-                                    <li><strong>Hello{{=A(session.user.Name
-                                          )}}.</strong></li>
+                                    <li><strong>Hello {{=A(session.user.Name,_href=URL('default','account', args=[session.user.Username]))}}.</strong></li>
                                     <li><div class="logout">
-                                    <input type='button' value='Login' onclick="parent.location='{{=URL('user', 'login')}}'">
+                                    <input type='button' value='Account' onclick="parent.location='{{=URL('default','account', args=[session.user.Username])}}'">
                                     <input type='button' value='Logout' onclick="parent.location='{{=URL('user', 'logout')}}'">
                                     </div></li>
                                 </ul>

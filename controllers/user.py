@@ -26,8 +26,10 @@ def logout():
     global user
     user = None
     session.user = None
-    return redirect(request.env.http_referer)
+    return redirect(URL('default','index'))
 
 def register():
        form = SQLFORM(db.user).process()
        return dict(form = form,page_title="Register");
+def edit():
+    return dict(page_title='Edit')

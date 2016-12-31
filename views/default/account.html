@@ -1,0 +1,34 @@
+{{include "header.html"}}
+{{include "navigation.html"}}
+<section class="property-dimensions" style="background-image:url(images/background/image-1.jpg);">
+  <div class="auto-container">
+      <!--Sec Title-->
+      <div class="sec-title centered">
+          <h2><strong>{{=session.user.Name}} {{=session.user.Surname}}</h2>
+                  <div class="desc-text"><h2>Previous Reservations</h2>
+                            <table class="table">
+                                <tr>             <th style="text-align:center;">Room</th>
+                                                                <th style="text-align:center;">Check-in Date</th>
+                                                                <th style="text-align:center;">Check-out Date</th></tr>
+                            <tr>
+                                {{for row in reversed(rows):}}
+
+
+                                <td>{{=row.Type}}</td>
+                            <td>{{=row.inDate}}</td>
+                        <td>{{=row.outDate}}</td></tr>
+                        {{pass}}
+                        </table>
+
+                    </div>
+
+
+        </div>
+        </div>
+
+        </div>
+
+</section>
+
+{{include "footer.html"}}
+{{pass}}

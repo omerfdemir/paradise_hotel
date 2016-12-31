@@ -1,0 +1,48 @@
+{{include "header.html"}}
+{{include "navigation.html"}}
+<!--Page Title-->
+<section class="page-title" style="background-image:url(images/background/bg-page-title.jpg);">
+  <div class="auto-container">
+      <div class="sec-title">
+            <h1>Reservation</h1>
+        </div>
+    </div>
+</section>
+
+
+    <!--Breadcrumb-->
+    <div class="breadcrumb-outer">
+    	<div class="auto-container">
+        	<div class="bread-crumb text-center"><a href="/paradise_hotel/default/index.html">Home</a> / <a href="#" class="current">Reservation</a></div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--Contact Section-->
+    <section class="contact-section no-padd-top">
+    	<div class="auto-container" style="text-align : center;">
+        	<div class="row clearfix">
+
+                	<h2><strong>Reservation</strong></h2>
+                    <div>{{=response.flash or ''}}</div>
+                    <!--Default Form-->
+                    <div class="default-form">
+                    <div class="row clearfix">
+                        <div class="col-md-18 col-sm-18 co-xs-18 form-group">
+                            {{=form}}
+                              </div>
+                            </form>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+              </div>
+          </div>
+            </section>
+{{include "footer.html"}}

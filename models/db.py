@@ -165,3 +165,5 @@ Field('User_id'),
 Field('Room_id'),
 Field('inDate','date'),
 Field('outDate','date'))
+db.reservation.inDate.requires=IS_DATE('%d-%m-%Y')
+db.reservation.outDate.requires=IS_DATE('%d-%m-%Y')

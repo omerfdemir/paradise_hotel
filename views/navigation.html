@@ -2,7 +2,7 @@
 <div class="navbar-collapse collapse clearfix">
     <ul class="navigation clearfix">
       {{
-          menu = [ ("index", "Home Page"),("rooms", "Rooms"),("gallery", "Gallery"),("contact", "Contact "),
+          menu = [ ("index", "Home Page"),("rooms", "Rooms"),("contact", "Contact "),
         ("about_us","About Us")  ]
           for (path, text) in menu:
              if request.controller == "default" and request.function== path:
@@ -30,9 +30,17 @@
     </ul>
 </div>
 </nav><!-- Main Menu End-->
+{{if session.user:}}
+    {{if session.role.Role=='admin':}}
+        <div class="btn-outer"><a href={{=URL('default','account', args=[session.user.Username])}} class="theme-btn visit-btn">Admin Panel</a></div>
+    {{else:}}
+        <div class="btn-outer"><a href={{=URL('default','account', args=[session.user.Username])}} class="theme-btn visit-btn">Account</a></div>
+    {{pass}}
 
-<div class="btn-outer"><a href="contact.html" class="theme-btn visit-btn">Schedule Visit</a></div>
-
+{{else:}}
+    <div class="btn-outer"><a href="{{=URL('user','login')}}" class="theme-btn visit-btn">Login</a></div>
+{{pass}}
+{{pass}}
 </div>
 </div>
 </div>
@@ -43,7 +51,7 @@
 <div class="auto-container clearfix">
 <!--Logo-->
 <div class="logo pull-left">
-<a href="index.html" class="img-responsive"><img src="/paradise_hotel/static/images/logo-small.png" alt="Homestate"></a>
+<a href="index" class="img-responsive"><img src="/paradise_hotel/static/images/logo-small.png" alt="Homestate"></a>
 </div>
 
 <!--Right Col-->
@@ -61,17 +69,17 @@
 
 <div class="navbar-collapse collapse clearfix">
   <ul class="navigation clearfix">
-    {{
-        menu = [ ("index", "Home Page"),("rooms", "Rooms"),("gallery", "Gallery"),("contact", "Contact "),
-      ("about_us", "About Us"),("login","Login Page") ]
-        for (path, text) in menu:
-           if request.controller == "default" and request.function== path:
-              response.write(LI(A(text, _href=URL('default',path), _class="active" )))
-           else:
-              response.write(LI(A(text, _href=URL('default',path) )))
-     }}
-         {{pass}}
-     {{pass}}
+      {{
+          menu = [ ("index", "Home Page"),("rooms", "Rooms"),("gallery", "Gallery"),("contact", "Contact "),
+        ("about_us","About Us")  ]
+          for (path, text) in menu:
+             if request.controller == "default" and request.function== path:
+                response.write(LI(A(text, _href=URL('default',path), _class="active" )))
+             else:
+                response.write(LI(A(text, _href=URL('default',path) )))
+       }}
+           {{pass}}
+       {{pass}}
   </ul>
 
 </div>

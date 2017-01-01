@@ -145,9 +145,8 @@ Field('Password','password',requires=IS_LENGTH(minsize=7)),
 Field('Email_Address',requires=IS_EMAIL()),
 Field('Phone_Number'),
 Field('Address'),
-Field('Gender',requires=IS_IN_SET(('Male','Female')))
-
-                )
+Field('Gender',requires=IS_IN_SET(('Male','Female'))),
+)
 db.user.Username.requires= IS_NOT_IN_DB(db,db.user.Username)
 db.user.Email_Address.requires= IS_NOT_IN_DB(db,db.user.Email_Address)
 
@@ -167,3 +166,14 @@ Field('inDate','date'),
 Field('outDate','date'))
 db.reservation.inDate.requires=IS_DATE('%d-%m-%Y')
 db.reservation.outDate.requires=IS_DATE('%d-%m-%Y')
+
+db.define_table('contact',
+Field('Name'),
+Field('Surname'),
+Field('Phone_Number'),
+Field('Email_Address'),
+Field('Message'))
+
+db.define_table('role',
+Field('Username'),
+Field('Role',default='user',requires=IS_IN_SET(('admin','user'))))

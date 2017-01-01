@@ -16,8 +16,24 @@
                     <a OnClick= href="{{=URL('room', args=[room_id])}}" class="tab-btn button">{{=data["name"]}}</a>
                       {{pass}}
                </div>
+               <table class="table">
+                   <tr>             <th style="text-align:center;">Most Liked Room</th>
+                       <th style="text-align:center;">Score</th>
+                   </tr>
+                   <tr>
+                       {{for row in room_name:}}
+       <td>{{=A(row.Type,_href=URL('default','room', args=[room_id]))}}</td>
+   <td> {{=max_score}}</td></tr>
+        </table>{{pass}}
+        <table class="table">
+            <tr>
+                <th style="text-align:center;">Last Reserved Room</th>
+            </tr>
+            <tr>
+                {{for row in room_name_2:}}
+<td>{{=A(row.Type,_href=URL('default','room', args=[room_id]))}}</td></tr>
+ </table> {{pass}}     </div>
 
-                </div>
             </div>
         </div>
 

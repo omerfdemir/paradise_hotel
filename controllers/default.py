@@ -24,37 +24,43 @@ all_rooms = {
                         "room_type":"1+1",
                         "person":"2",
                         "price":"150$ per Night",
-                        "specs":'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV'
+                        "specs":'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV',
+                        "photo":"/paradise_hotel/static/images/rooms/classic_suite.jpg"
                         },
             2:{ "name":"Superior Suite",
                         "room_type":"1+1",
                         "person":"3",
                         "price":"200$ per Night",
-                        "specs":'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV'
+                        "specs":'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV',
+                        "photo":"/paradise_hotel/static/images/rooms/superior_suite.jpg"
                         },
             3:{ "name":"Deluxe Suite",
                         "room_type":"1+1",
                         "person":"4",
                         "price":"250$ per Night",
-                        "specs":'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV'
+                        "specs":'Wireless Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV',
+                        "photo":"/paradise_hotel/static/images/rooms/deluxe_suite.jpg"
                         },
             4:{ "name":"Junior Family Suite",
                         "room_type":"2+1",
                         "person":"6",
                         "price":"300$ per Night",
-                        "specs":'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi '
+                        "specs":'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi ',
+                        "photo":"/paradise_hotel/static/images/rooms/junior_family_suite.jpg"
                         },
             5:{ "name":"Family Suite",
                         "room_type":"2+1 Dublex",
                         "person":"6",
                         "price":"400$ per Night",
-                        "specs":'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi'
+                        "specs":'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi',
+                        "photo":"/paradise_hotel/static/images/rooms/family_suite.jpg"
                         },
             6:{ "name":"Deluxe Family Suite",
                         "room_type":"2+1 Dublex",
                         "person":"8",
                         "price":"500$ per Night",
-                        "specs":'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi'
+                        "specs":'Air Conditioner, Wireless Fiber Internet, Private Balcony, Fridge, Washing Machine, Hair Dryer, Iron, Dish Machine, Tea Machine, Microwave Oven, LED TV, Jacuzzi',
+                        "photo":"/paradise_hotel/static/images/rooms/deluxe_family_suite.jpg"
                         },
 
 }
@@ -97,6 +103,10 @@ def room():
         rows = db((db.room_specs.Room_id == room_id)).select('Comments','Username')
         sqlstring = "select avg(Score) from room_specs where Room_id = " + str(room_id)
         avg = db.executesql(sqlstring)
+
+
+
+
         print room_id
         if form.process().accepted:
             db.room_specs.insert(Room_id =room_id ,
@@ -132,15 +142,36 @@ def room():
 
 
 def rooms():
-    return dict(page_title="Rooms",rooms_data=all_rooms.items())
+            sqlstring2 = "select max(avg((Score)) from room_specs"
+            max_score = 0
+            score=0
+            room_id=0
+            for i in range(0,7):
+                sqlstring2  = "select avg(Score) from room_specs where Room_id = " + str(i)
+                score = db.executesql(sqlstring2)
+                if score>max_score:
+                    max_score=score
+                    room_id = i
+            room_name= db(db.rooms.id == room_id).select('Type')
+
+
+            last_reserved_room_id=db(db.reservation).select('Room_id').last()
+            room_id_2=last_reserved_room_id.Room_id
+            room_name_2=db(db.rooms.id==room_id_2).select('Type')
+            print room_name_2
+            print max_score,room_id,room_name
+            return dict(page_title="Rooms",rooms_data=all_rooms.items(),max_score=max_score,room_name=room_name,
+            room_name_2=room_name_2)
 
 def account():
     print request.args
     account_id = request.args(1)
     user_id = session.user.id
     #request.args(0)= account_id
+    rows3 = db((db.reservation.id)).select('id','User_id','Room_id','inDate','outDate')
+    rows2 = db(db.user.Username).select('id','Username','Name','Surname')
     rows = db((db.reservation.User_id==user_id)&(db.rooms.id==db.reservation.Room_id)).select('Type','inDate','outDate')
-    return dict(page_title="Account",rows=rows)
+    return dict(page_title="Account",rows=rows,rows2=rows2,rows3=rows3)
 def reservation():
     user_id = session.user.id
     room_id = session.rooms
@@ -170,7 +201,15 @@ def index():
     return auth.wiki()
     """
     return dict(page_title="Home Page")
+def contact():
 
+    if session.user:
+        form=SQLFORM(db.contact).process()
+    else:
+        form=SQLFORM(db.contact).process()
+    rows4 = db(db.contact).select()
+
+    return dict(page_title="Contact",form=form,rows4=rows4)
 
 
 @cache.action()

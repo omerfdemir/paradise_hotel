@@ -1,14 +1,0 @@
-Äcgluon.globals
-Session
-q}q(U_formkey[user/create]q]qU$4fd1939e-4e71-43b5-ab17-89915f95a21bqaUflashqNUuserqcpydal.objects
-Row
-q}q	(UUsernameq
-U	oguzalkanqUPhone_NumberqU8989898989898qUSurnameqUAlkanqUNameqUOƒüuzqUupdate_recordqcpydal.helpers.classes
-RecordUpdater
-q)Åq}q(Ucolsetqh}q(h
-hhhhhhhhhUGenderqUMaleqUAddressqUMuƒülaqUPasswordqUdeneme1qUEmail_AddressqUoguz@gmail.comqUidq äUdelete_recordq!cpydal.helpers.classes
-RecordDeleter
-q")Åq#}q$(U	tablenameq%hUdbq&cpydal.base
-DAL_unpickler
-q'U 8f8c2c36867443c686d3bcdf72be5bc3q(ÖRq)Uidq*äubuÖRh%hh&h)h*äubhhhhhhhhh äh!h#uÖRq+U_formkey[login]q,]q-(U$e6339630-d681-49de-b4e1-fe525ff0ccc7q.U$7fbd8689-08e4-4380-b8de-18e20fa87d6dq/U$548cba9f-176b-4288-a43d-a4ce55809c1cq0U$b40b03f3-9edc-44cc-b363-27b321c22eb1q1U$dd26cffe-0a56-4ef1-b546-acc76b49d1feq2U$f4065f8c-65ff-41c6-8150-6ca544950cb1q3U$4c83eac8-2d12-4b34-a9ca-0a27e3c3318eq4eU
-_auth_nextq5U/paradise_hotel/user/registerq6uÖRq7.

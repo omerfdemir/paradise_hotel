@@ -4,7 +4,46 @@
   <div class="auto-container">
       <!--Sec Title-->
       <div class="sec-title centered">
-          <h2><strong>{{=session.user.Name}} {{=session.user.Surname}}</h2>
+              {{if session.role.Role=='admin':}}
+              <h2><strong>{{=session.user.Name}} {{=session.user.Surname}} <br>{{=session.role.Role}} Panel</h2>
+              <div class="desc-text"><h2>Edit Users</h2>
+                        <table class="table">
+                            <tr>             <th style="text-align:center;">Userid</th>
+                                                            <th style="text-align:center;">Username</th>
+                                                            <th style="text-align:center;">Name</th>
+                                                        <th style="text-align:center;">Surname</th></tr>
+                        <tr>
+                            {{for row in rows2:}}
+
+                            <td>{{=A(row.id,_href=URL('appadmin','update/db/user', args=[row.id]))}} </td>
+                            <td>{{=row.Username}} </td>
+                        <td>{{=row.Name}}</td>
+                    <td>{{=row.Surname}}</td></tr>{{pass}}</table></div>
+                    <div class="desc-text"><h2>All Reservations</h2>
+                              <table class="table">
+                                  <tr>             <th style="text-align:center;">Reservation Id</th>
+                                                                  <th style="text-align:center;">User id</th>
+                                                                  <th style="text-align:center;">Room id</th>
+                                                              <th style="text-align:center;">inDate</th>
+                                                          <th style="text-align:center;">outDate</th></tr>
+                              <tr>
+                                  {{for row in rows3:}}
+
+                                  <td>{{=A(row.id,_href=URL('appadmin','update/db/reservation', args=[row.id]))}} </td>
+                                  <td>{{=row.User_id}} </td>
+                              <td>{{=row.Room_id}}</td>
+                          <td>{{=row.inDate}}</td>
+                      <td>{{=row.outDate}}</td></tr>
+                      {{pass}}
+                    </table>
+                    </div>
+
+
+
+                {{else:}}
+                <h2><strong>{{=session.user.Name}} {{=session.user.Surname}}</h2>
+
+
                   <div class="desc-text"><h2>Previous Reservations</h2>
                             <table class="table">
                                 <tr>             <th style="text-align:center;">Room</th>
@@ -14,12 +53,12 @@
                                 {{for row in reversed(rows):}}
 
 
-                                <td>{{=row.Type}}</td>
+                                <td>{{=row.Type}} </td>
                             <td>{{=row.inDate}}</td>
                         <td>{{=row.outDate}}</td></tr>
                         {{pass}}
                         </table>
-
+                        {{pass}}
                     </div>
 
 

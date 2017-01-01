@@ -1,0 +1,79 @@
+{{include "header.html"}}
+{{include "navigation.html"}}
+<!--Page Title-->
+<section class="page-title" style="background-image:url(images/background/bg-page-title.jpg);">
+  <div class="auto-container">
+      <div class="sec-title">
+            <h1>Contact</h1>
+        </div>
+    </div>
+</section>
+
+
+    <!--Breadcrumb-->
+    <div class="breadcrumb-outer">
+    	<div class="auto-container">
+        	<div class="bread-crumb text-center"><a href="/paradise_hotel/default/index.html">Home</a> / <a href="#" class="current">Contact</a></div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--Contact Section-->
+    <section class="contact-section no-padd-top">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+                {{if session.user:}}
+                    {{if session.role.Role == 'admin':}}
+                    <h2>Admin Contact Page</h2>
+                    <table class="table">
+                        <tr> <th style="text-align:center;">Name-Surname</th>
+                            <th style="text-align:center;">E-mail</th>
+                            <th style="text-align:center;">Message</th>
+                        </tr>
+
+                        <tr>{{for row in rows4:}}
+
+            <td style="text-align:center;">{{=row.Name}} {{=row.Surname}}</td>
+        <td style="text-align:center;"> {{=row.Email_Address}}</td>
+    <td style="text-align:center;"> {{=row.Message}}</td></tr>
+             {{pass}}</table>
+
+
+                    {{else:}}
+                	<h2><strong>Contact </strong></h2>
+                    <div>{{=response.flash or ''}}</div>
+                    <!--Default Form-->
+                    <div class="default-form">
+                    <div class="row clearfix">
+                        <div class="col-md-18 col-sm-18 co-xs-18 form-group">
+                            {{=form}}
+                              </div>
+                            </form>
+                            {{pass}}
+
+                            </div>
+                            {{else:}}
+                        	<h2><strong>Contact </strong></h2>
+                            <div>{{=response.flash or ''}}</div>
+                            <!--Default Form-->
+                            <div class="default-form">
+                            <div class="row clearfix">
+                                <div class="col-md-18 col-sm-18 co-xs-18 form-group">
+                                    {{=form}}
+                                      </div>
+                                    </form>
+
+                                    </div>
+                    {{pass}}
+                    {{pass}}
+
+                        </form>
+                    </div>
+                </div>
+              </div>
+          </div>
+            </section>
+{{include "footer.html"}}
